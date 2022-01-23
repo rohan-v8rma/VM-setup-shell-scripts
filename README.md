@@ -10,15 +10,16 @@ rohan@ubuntu:~$
 ```
 rohan@ubuntu:~#
 ```
-Superuser has administrative privileges. This can be dangerous, since you are able to delete or overwrite any file on the system. 
-Unless you absolutely need administrative privileges, DO NOT operate as the superuser.
+Superuser has administrative privileges. This is dangerous, since superuser can delete/overwrite any file on the system. Operate as superuser ONLY when administrative 
+privileges are needed.
 - Basic commands:
   - `pwd`: print working directory
   - `cd`: change directory
   - `ls`: list files and directories
-- Unix-like operating systems and Windows have hierarchial directory structure (tree-like pattern of directories, called folders in other systems). However, Windows has different drive letters for different storage devices and partitions, whereas Linux has only one file tree, and different devices can be on different branches of that tree.
-- Linux has a root directory **‘/’** and all files and folders are contained inside it.
-- The working directory on startup is **‘/home/_username_’**, but it can be anything set by the system administrator.
+- Unix-like operating systems and Windows have hierarchial directory structure (tree-like pattern of directories, called folders in other systems). 
+- However, Windows has different drive letters for different storage devices and partitions, whereas Linux has only one file tree, and different devices can be on different branches of that tree.
+- Linux has a root directory `‘/’` and all files and folders are contained inside it.
+- The working directory on startup is `‘/home/_username_’`, but it can be anything set by the system administrator.
 
 ## Commands
 
@@ -70,7 +71,4 @@ The **apt** tool was introduced to solve this problem. **apt** consists some of 
 
 ### Functions of **apt** tool
 
-- Maintains a package list, meaning it fetches a list of all the available software that can be installed on the platform. This package list is updated using the following command:
-  ```
-  sudo apt update
-  ```
+- Maintains a package list, meaning it fetches a list of all the available software that can be installed on the platform. This package list is updated using `sudo apt update`
