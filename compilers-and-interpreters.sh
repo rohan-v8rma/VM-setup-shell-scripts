@@ -1,17 +1,17 @@
 #!/bin/bash
 
 #Adding Python
-sudo apt-get update
-sudo apt-get install -y python3
-sudo apt-get install -y python3-pip
-sudo apt-get install -y python3-venv
-sudo apt-get install -y idle-python3.10
+sudo apt update
+sudo apt install -y python3
+sudo apt install -y python3-pip
+sudo apt install -y python3-venv
+sudo apt install -y idle-python3.10
 
 
 #Adding C++
-sudo apt-get update
+sudo apt update
 sudo apt install -y build-essential
-sudo apt-get install -y manpages-dev
+sudo apt install -y manpages-dev
 
 #Adding Node.js framework and package manager (npm) of Node.js
 sudo apt install -y nodejs

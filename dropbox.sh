@@ -5,11 +5,11 @@
 sudo apt upgrade
 
 #Adding GitHub to Ubuntu
-sudo apt-get install git
+sudo apt install git
 
 #Adding Dropbox to Nautilus
-sudo apt-get install python3-gpg
-sudo apt-get install -y gnome-common libnautilus-extension-dev python3-gi python3-docutils
+sudo apt install python3-gpg
+sudo apt install -y gnome-common libnautilus-extension-dev python3-gi python3-docutils
 cd ~/Downloads
 git clone https://github.com/dropbox/nautilus-dropbox.git
 cd ~/Downloads/nautilus-dropbox
