@@ -57,11 +57,10 @@ Syntax: `cd <path name>`
 
 Syntax: `echo <string>`  
 Used to display `<string>` on the command-line. It is a built-in command used in shell scripts and batch files to output status text to the screen or a file.
-<br>    
 
 ### dirname
 
-Syntax: `dirname <pathoffile>`  
+Syntax: `dirname <file-path>`  
 
 This command prints the directory containing the supplied path.
 If we supply a file/directory, `dirname` outputs the path containing that file/directory. 
@@ -75,7 +74,8 @@ root@ubuntu:~$
 
 ### readlink
 
-Used to obtain the full path of a file. `readlink` prints the absolute path of a symbolic link (a type of file in Linux that points to another file or a folder on your computer. Symlinks are similar to shortcuts in Windows.) or the absolute path for a supplied relative path.
+Used to obtain the full path of a file. `readlink` prints the absolute path of a symbolic link (a type of file in Linux that points to another file or a folder on your computer. Symlinks are similar to shortcuts in Windows.) or the absolute path for a supplied relative path.  
+NOTE: It is vital that our current directory is a parent directory or higher of the file in question.
 
 Syntax: `readlink [<flag>] <relative-path/file-name>`
 
