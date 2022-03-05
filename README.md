@@ -12,7 +12,12 @@
     - [comment operator (`<<`)](#operator-for-comments)
   - [File Names](#file-names)
   - [Package Management](#package-management)
-
+    - [apt tool](#functions-of-apt-tool)
+- [LXDE](#lxde)  
+  - [What is LXDE?](#what-is-lxde)
+  - [Tips and Tricks](#tips-and-tricks)
+    - [Installing LXDE](#installing-lxde)
+    - [How to use LXDE after installing it](#how-to-use-lxde-after-installing-it)
 # Shell Basics
 
 ## Introduction
@@ -188,4 +193,24 @@ The `apt` tool was introduced to solve this problem. `apt` consists some of the 
 - `sudo apt upgrade`: Upgrades the previously installed software to newer versions
 - `sudo apt install <package-name>`: Used to install new software packages
 - `sudo apt remove <package-name>`: Removes pieces of software WITHOUT breaking the system
+
+# LXDE
+
+## What is LXDE?
+
+LXDE is a free desktop environment with comparitively low resource requirements. 
+
+It is a good option for running Ubuntu VMs with 4 GBs of RAM or less since GNOME is a bit more resource heavy.
+
+## Tips and Tricks
+
+### Installing LXDE
+
+Run the `lxde-install.sh` executable script present in this repo.
+
+### How to use LXDE after installing it
+
+1. Logout 
+2. Reach the login screen and login after selecting LXDE as your desktop environment from the bottom right menu.
+### Increasing the Window button sizes 
 
