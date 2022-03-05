@@ -53,6 +53,18 @@ Syntax: `cd <path name>`
 - `cd ~userName`: changes working directory to the home directory of the specified user  
 <br>
 
+### touch
+
+Syntax: `touch <filename>`
+ 
+Navigate to the folder where the file is to be created or open a terminal within that folder. Run a command in the format shown above.
+
+For example:
+```
+root@ubuntu:~$ touch test.txt
+root@ubuntu:~$
+```
+
 ### echo
 
 Syntax: `echo <string>`  
