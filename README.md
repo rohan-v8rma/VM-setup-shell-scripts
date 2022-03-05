@@ -29,7 +29,7 @@
 ## Introduction
 
 - Operating as a regular user.
-```
+```console
 rohan@ubuntu:~$ 
 ```
 - Operating as a superuser.
@@ -66,7 +66,7 @@ Syntax: `cd <path name>`
   /home/rohan/downloads>
   ```
   - `..` refers to the parent directory of the working directory. Example:
-  ```
+  ```console
   /usr/bin> cd ..
   /usr>
   ```
