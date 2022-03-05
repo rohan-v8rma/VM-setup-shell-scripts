@@ -7,3 +7,4 @@ cd $(dirname $(readlink -f ./runall.sh))
 ./look-and-feel.sh
 ./microsoft-edge.sh
 ./vs-code.sh
+clear
