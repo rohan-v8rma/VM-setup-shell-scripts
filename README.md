@@ -1,23 +1,29 @@
 # INDEX
 
+- [INDEX](#index)
 - [Shell Basics](#shell-basics)
   - [Introduction](#introduction)
   - [Commands](#commands)
     - [cd](#cd)
+      - [**Shortcuts**](#shortcuts)
     - [touch](#touch)
     - [echo](#echo)
     - [dirname](#dirname)
-    - [command substitution (`$`)](#command-substitution)
+    - [readlink](#readlink)
+      - [**flags**](#flags)
+    - [command substitution (`$`)](#command-substitution-)
     - [chmod](#chmod)
-    - [comment operator (`<<`)](#operator-for-comments)
+    - [comment operator (`<<`)](#comment-operator-)
   - [File Names](#file-names)
   - [Package Management](#package-management)
-    - [apt tool](#functions-of-apt-tool)
-- [LXDE](#lxde)  
+    - [Functions of **apt** tool](#functions-of-apt-tool)
+- [LXDE](#lxde)
   - [What is LXDE?](#what-is-lxde)
   - [Tips and Tricks](#tips-and-tricks)
     - [Installing LXDE](#installing-lxde)
     - [How to use LXDE after installing it](#how-to-use-lxde-after-installing-it)
+    - [Increasing the Window button sizes](#increasing-the-window-button-sizes)
+
 # Shell Basics
 
 ## Introduction
@@ -125,7 +131,7 @@ home/example/foo/foo.txt
 root@ubuntu:~/home/example$
 ```
 
-### command substitution
+### command substitution (`$`)
 
 Syntax: `$(command)`  
 where `command` is executed in a sub-shell, and the output from `command` replaces its call.<br><br>
@@ -159,7 +165,7 @@ mode.
 Syntax: `chmod u+x <file-name>`  
 This command is used to give the shell script `<file-name>` executable permissions. 
 
-### `<<` operator for comments
+### comment operator (`<<`)
 Syntax:
 ```
 <<comment-name
