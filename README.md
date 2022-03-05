@@ -1,3 +1,18 @@
+# INDEX
+
+- [Shell Basics](#shell-basics)
+  - [Introduction](#introduction)
+  - [Commands](#commands)
+    - [cd](#cd)
+    - [touch](#touch)
+    - [echo](#echo)
+    - [dirname](#dirname)
+    - [command substitution (`$`)](#command-substitution)
+    - [chmod](#chmod)
+    - [comment operator (`<<`)](#operator-for-comments)
+  - [File Names](#file-names)
+  - [Package Management](#package-management)
+
 # Shell Basics
 
 ## Introduction
@@ -139,7 +154,7 @@ mode.
 Syntax: `chmod u+x <file-name>`  
 This command is used to give the shell script `<file-name>` executable permissions. 
 
-### << operator for comments
+### `<<` operator for comments
 Syntax:
 ```
 <<comment-name
