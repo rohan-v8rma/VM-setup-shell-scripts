@@ -33,7 +33,7 @@
 rohan@ubuntu:~$ 
 ```
 - Operating as a superuser.
-```
+```console
 rohan@ubuntu:~#
 ```
 Superuser has administrative privileges. This is dangerous, since superuser can delete/overwrite any file on the system. Operate as superuser ONLY when administrative 
@@ -61,7 +61,7 @@ Syntax: `cd <path name>`
   - `bin`: subdirectory of `user`
 - **Relative Pathname** starts from the working directory. Special notations:
   - `.` refers to the working directory itself. Example:
-  ```
+  ```console
   /home/rohan> cd ./downloads
   /home/rohan/downloads>
   ```
@@ -86,7 +86,7 @@ Syntax: `touch <filename>`
 Navigate to the folder where the file is to be created or open a terminal within that folder. Run a command in the format shown above.
 
 For example:
-```
+```console
 root@ubuntu:~$ touch test.txt
 root@ubuntu:~$
 ```
@@ -104,7 +104,7 @@ This command prints the directory containing the supplied path.
 If we supply a file/directory, `dirname` outputs the path containing that file/directory. 
 
 For example:
-```
+```console
 root@ubuntu:~$ dirname /home/example/foo
 /home/example
 root@ubuntu:~$
@@ -136,7 +136,7 @@ root@ubuntu:~/home/example$
 Syntax: `$(command)`  
 where `command` is executed in a sub-shell, and the output from `command` replaces its call.<br><br>
 Command substitution can be used in combination with `dirname` to obtain the name of the directory which contains a specific file, without knowing even the relative path of that file.
-```
+```console
 root@ubuntu:~$ dirname $(readlink -f file.txt)
 /home/example/foo
 root@ubuntu:~$
@@ -167,7 +167,7 @@ This command is used to give the shell script `<file-name>` executable permissio
 
 ### comment operator (`<<`)
 Syntax:
-```
+```console
 <<comment-name
 //Comment body
 
