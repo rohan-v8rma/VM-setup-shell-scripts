@@ -14,6 +14,7 @@
     - [command substitution (`$`)](#command-substitution-)
     - [chmod](#chmod)
     - [comment operator (`<<`)](#comment-operator-)
+  - [What are Environment Variables?](#what-are-environment-variables)
   - [File Names](#file-names)
   - [Package Management](#package-management)
     - [Functions of **apt** tool](#functions-of-apt-tool)
@@ -174,6 +175,24 @@ Syntax:
 comment-name
 ```
 where `comment-name` can be replaced by any string.
+
+## What are Environment Variables?
+
+Environment variables are data holder variables stored within a system like unix, linux or windows etc. These variables are not accessible outside that environment. So only the programs executing inside these environments can access them and use them. They have a name and value.
+
+They are like shortcuts which are used to avoid remembering paths for execution. 
+
+For example, if we wish to execute python in an ubuntu installation in which the environment variables are set,
+```console
+python filename.py 
+```
+
+If I didn't set environment variable or define it,
+```console
+/usr/bin/python filename.py 
+```
+In both the methods python will execute and the first one is easy to use than the second one.
+
 
 ## File Names
 
