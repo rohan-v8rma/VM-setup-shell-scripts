@@ -204,7 +204,7 @@ In both the methods python will execute and the first one is easy to use than th
 **Debian** has a robust packaging system and every component and application is built into a package that is installed on your system. Debian uses a set of tools called **Advanced Packaging Tool** _(APT, not to be confused with the command `apt`)_ to manage this packaging system.
 
 There are various tools that interact with APT and allow us to install, remove and manage packages in Debian based Linux distributions. `apt-get` is one such command-line tool which is widely popular.
-However there is a problem of redundancy when it comes to `apt-get** commands, as there are a numbe`of similar commands in the `apt-cache` tool.
+However there is a problem of redundancy when it comes to `apt-get` commands, as there are a number of similar commands in the `apt-cache` tool.
 
 Also, these commands are way too low level and they have so many functionalities which are perhaps never used by an average Linux user.
 On the other hand, the most commonly used package management commands are scattered across `apt-get` and `apt-cache`.
