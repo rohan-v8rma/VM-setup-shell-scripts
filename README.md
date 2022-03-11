@@ -125,7 +125,7 @@ If the conditions specified by these flags aren't met, an output isn't returned.
 - `-m` : None of the components in the supplied path are required to exist.
 
 For example, obtaining absolute path using the relative path:
-```
+```console
 root@ubuntu:~/home/example$ readlink -f foo/foo.txt
 home/example/foo/foo.txt
 root@ubuntu:~/home/example$
