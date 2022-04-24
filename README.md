@@ -1,33 +1,42 @@
 # INDEX
 
 - [INDEX](#index)
-- [Shell Basics](#shell-basics)
-  - [Introduction](#introduction)
-  - [Commands](#commands)
-    - [cd](#cd)
-      - [**Shortcuts**](#shortcuts)
-    - [touch](#touch)
-    - [echo](#echo)
-    - [dirname](#dirname)
-    - [readlink](#readlink)
-      - [**flags**](#flags)
-    - [command substitution (`$`)](#command-substitution-)
-    - [chmod](#chmod)
-    - [comment operator (`<<`)](#comment-operator-)
-  - [What are Environment Variables?](#what-are-environment-variables)
+
+- [Introduction to Shell Basics](#introduction-to-shell-basics)
+
+- [Commands](#commands)
+  - [cd](#cd)
+    - [**Shortcuts**](#shortcuts)
+  - [touch](#touch)
+  - [echo](#echo)
+  - [dirname](#dirname)
+  - [readlink](#readlink)
+    - [**flags**](#flags)
+  - [command substitution (`$`)](#command-substitution-)
+  - [chmod](#chmod)
+  - [comment operator (`<<`)](#comment-operator-)
+
+- [Important Concepts](#important-concepts)
+
+  - [Environment Variables](#environment-variables)
   - [File Names](#file-names)
+  - [UUID (`Universally Unique Identifier`)](#uuid-universally-unique-identifier)
+  - [File Offset](#file-offset)
+  - [TODO](#todo)
+    - [Loop Device](#loop-device)
+    - [Block Device](#block-device)
   - [Package Management](#package-management)
     - [Functions of **apt** tool](#functions-of-apt-tool)
+
 - [LXDE](#lxde)
+
   - [What is LXDE?](#what-is-lxde)
   - [Tips and Tricks](#tips-and-tricks)
     - [Installing LXDE](#installing-lxde)
     - [How to use LXDE after installing it](#how-to-use-lxde-after-installing-it)
     - [Increasing the Window button sizes](#increasing-the-window-button-sizes)
 
-# Shell Basics
-
-## Introduction
+# Introduction to Shell Basics
 
 - Operating as a regular user.
 ```console
@@ -48,9 +57,9 @@ privileges are needed.
 - Linux has a root directory `‘/’` and all files and folders are contained inside it.
 - The working directory on startup is `‘/home/_username_’`, but it can be anything set by the system administrator.
 
-## Commands
+# Commands
 
-### cd
+## cd
 
 Syntax: `cd <path name>`  
 `<path name>` can be **absolute** or **relative** to the current working directory.
@@ -73,14 +82,14 @@ Syntax: `cd <path name>`
   ```
   In both the above cases, we can make this change using absolute pathnames as well.
 
-#### **Shortcuts**
+### **Shortcuts**
 
 - `cd`: changes working directory to home directory
 - `cd -`: changes working directory to the previous one
 - `cd ~userName`: changes working directory to the home directory of the specified user  
 <br>
 
-### touch
+## touch
 
 Syntax: `touch <filename>`
  
@@ -92,12 +101,12 @@ root@ubuntu:~$ touch test.txt
 root@ubuntu:~$
 ```
 
-### echo
+## echo
 
 Syntax: `echo <string>`  
 Used to display `<string>` on the command-line. It is a built-in command used in shell scripts and batch files to output status text to the screen or a file.
 
-### dirname
+## dirname
 
 Syntax: `dirname <file-path>`  
 
@@ -111,14 +120,14 @@ root@ubuntu:~$ dirname /home/example/foo
 root@ubuntu:~$
 ```
 
-### readlink
+## readlink
 
 Used to obtain the full path of a file. `readlink` prints the absolute path of a symbolic link (a type of file in Linux that points to another file or a folder on your computer. Symlinks are similar to shortcuts in Windows.) or the absolute path for a supplied relative path.  
 NOTE: It is vital that our current directory is a parent directory or higher of the file in question.
 
 Syntax: `readlink [<flag>] <relative-path/file-name>`
 
-#### **flags**
+### **flags**
 
 If the conditions specified by these flags aren't met, an output isn't returned.
 - `-f` : All but the last component (which is the file itself) in the supplied path must exist. If the path does not exist.
@@ -132,7 +141,7 @@ home/example/foo/foo.txt
 root@ubuntu:~/home/example$
 ```
 
-### command substitution (`$`)
+## command substitution (`$`)
 
 Syntax: `$(command)`  
 where `command` is executed in a sub-shell, and the output from `command` replaces its call.<br><br>
@@ -143,7 +152,7 @@ root@ubuntu:~$ dirname $(readlink -f file.txt)
 root@ubuntu:~$
 ```
 
-### chmod
+## chmod
 
 `chmod` allows control of read, edit and run permission for files and directories. `chmod` stands for change 
 mode.   
@@ -166,7 +175,7 @@ mode.
 Syntax: `chmod u+x <file-name>`  
 This command is used to give the shell script `<file-name>` executable permissions. 
 
-### comment operator (`<<`)
+## comment operator (`<<`)
 Syntax:
 ```console
 <<comment-name
@@ -176,7 +185,9 @@ comment-name
 ```
 where `comment-name` can be replaced by any string.
 
-## What are Environment Variables?
+# Important Concepts
+
+## Environment Variables
 
 Environment variables are data holder variables stored within a system like unix, linux or windows etc. These variables are not accessible outside that environment. So only the programs executing inside these environments can access them and use them. They have a name and value.
 
@@ -198,6 +209,31 @@ In both the methods python will execute and the first one is easy to use than th
 
 - File names that begin with a period character are hidden. This means that `ls` will not list them unless we say `ls -a`, where `-a` means display all.
 - File names in Linux, like Unix, are case sensitive.
+
+## UUID (`Universally Unique Identifier`)
+
+UUID is a unique identifier used in partitions to uniquely identify partitions in Linux operating systems. 
+
+UUID is a property of the disk partition itself. So, if you install the hard drive containing the partitions on another Linux computer, the partitions will have the same UUID as before which is a good thing.
+
+The UUID of a partition is required mainly for mounting the partitions correctly in a computer system where hundreds of hard drives are installed. 
+
+If you mount the hard drives or SSDs using UUIDs, there is almost zero chances of the wrong hard drive getting mounted and causing serious data loss.
+
+Our usual computers and laptops where mostly 1 or 2 hard drives are installed and we need limited number of partitions won’t benefit much from UUIDs.
+
+Refer [this](https://linuxhint.com/uuid_storage_devices_linux/) for obtaining the UUID of a partition. 
+
+## File Offset
+
+An offset into a file is simply the character location within that file, usually starting with 0; thus “offset 240” is actually the 241st byte in the file. 
+
+
+## TODO
+
+### Loop Device
+
+### Block Device
 
 ## Package Management
 
