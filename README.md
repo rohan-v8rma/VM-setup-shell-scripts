@@ -3,17 +3,21 @@
 - [INDEX](#index)
 
 - [Introduction to Shell Basics](#introduction-to-shell-basics)
+  - [Fundamentals](#fundamentals)
+  - [Regular User vs. Super User](#regular-user-vs-super-user)
+  - [**Home directory** in Linux](#home-directory-in-linux)
 
 - [Commands](#commands)
-  - [cd](#cd)
+  - [`cd`](#cd)
     - [**Shortcuts**](#shortcuts)
-  - [touch](#touch)
-  - [echo](#echo)
-  - [dirname](#dirname)
-  - [readlink](#readlink)
+  - [`mv`](#mv)
+  - [`touch`](#touch)
+  - [`echo`](#echo)
+  - [`dirname`](#dirname)
+  - [`readlink`](#readlink)
     - [**flags**](#flags)
   - [command substitution (`$`)](#command-substitution-)
-  - [chmod](#chmod)
+  - [`chmod`](#chmod)
   - [comment operator (`<<`)](#comment-operator-)
 
 - [Important Concepts](#important-concepts)
@@ -26,7 +30,8 @@
     - [Loop Device](#loop-device)
     - [Block Device](#block-device)
   - [Package Management](#package-management)
-    - [Functions of **apt** tool](#functions-of-apt-tool)
+    - [Functions of `apt` tool](#functions-of-apt-tool)
+    - [`apt remove` vs. `apt purge`]()
 
 - [LXDE](#lxde)
 
@@ -38,28 +43,40 @@
 
 # Introduction to Shell Basics
 
+## Fundamentals
+
+- Basic commands:
+  - `pwd`: print working directory
+  - `cd`: change directory
+  - `ls`: list files and directories
+
+- Unix-like operating systems and Windows have hierarchial directory structure (tree-like pattern of directories, called folders in other systems). 
+- However, Windows has different drive letters for different storage devices and partitions, whereas Linux has only one file tree, and different devices can be on different branches of that tree.
+- Linux has a root directory `‘/’` and all files and folders are contained inside it.
+- The working directory on startup is `/home/<username>` which is the [**Home directory**](#home-directory-in-linux), but it can be anything set by the system administrator.
+
+## Regular User vs. Super User
+
 - Operating as a regular user.
 ```console
 rohan@ubuntu:~$ 
 ```
-- Operating as a superuser.
+- Operating as a super user.
 ```console
 rohan@ubuntu:~#
 ```
 Superuser has administrative privileges. This is dangerous, since superuser can delete/overwrite any file on the system. Operate as superuser ONLY when administrative 
 privileges are needed.
-- Basic commands:
-  - `pwd`: print working directory
-  - `cd`: change directory
-  - `ls`: list files and directories
-- Unix-like operating systems and Windows have hierarchial directory structure (tree-like pattern of directories, called folders in other systems). 
-- However, Windows has different drive letters for different storage devices and partitions, whereas Linux has only one file tree, and different devices can be on different branches of that tree.
-- Linux has a root directory `‘/’` and all files and folders are contained inside it.
-- The working directory on startup is `‘/home/_username_’`, but it can be anything set by the system administrator.
+
+## **Home directory** in Linux
+
+`~` represents the **Home directory** of our linux system. Note that this is different from the `home` directory of the system. 
+
+The **Home directory** stands for `/home/<user-name>` so we can use the tilde symbol (`~`) to not have to change our script for different users.
 
 # Commands
 
-## cd
+## `cd`
 
 Syntax: `cd <path name>`  
 `<path name>` can be **absolute** or **relative** to the current working directory.
@@ -72,13 +89,15 @@ Syntax: `cd <path name>`
 - **Relative Pathname** starts from the working directory. Special notations:
   - `.` refers to the working directory itself. Example:
   ```console
-  /home/rohan> cd ./downloads
-  /home/rohan/downloads>
+  root@ubuntu:~$ cd ./Downloads
+  root@ubuntu:~/Downloads$
   ```
+  where `~/Downloads` stands for `/home/<username>/Downloads`.
+
   - `..` refers to the parent directory of the working directory. Example:
   ```console
-  /usr/bin> cd ..
-  /usr>
+  root@ubuntu:/usr/bin$ cd ..
+  root@ubuntu:/usr$
   ```
   In both the above cases, we can make this change using absolute pathnames as well.
 
@@ -89,7 +108,25 @@ Syntax: `cd <path name>`
 - `cd ~userName`: changes working directory to the home directory of the specified user  
 <br>
 
-## touch
+## `mv`
+
+To move a file in a terminal, we use the `mv` command to move a file from one location to another.
+
+Note that if in case the destination has a file with the same name, it is OVERWRITTEN.
+
+```console
+root@ubuntu:~/Downloads$ mv example.txt ~/Documents
+
+root@ubuntu:~/Downloads$ ls ~/Documents
+example.txt
+```
+The file `example.txt` was moved from `/home/<username>/Downloads` to `/home/<username>/Documents`.
+
+An important thing to note is, remember to use `sudo` when performing operations like moving because in most systems, all users don't have WRITE access everywhere. 
+
+An alernative to this would be to use the command `chmod a+w ./path` to give everyone WRITE access at the place we wish to move the file but this could lead to vulnerabilities.
+
+## `touch`
 
 Syntax: `touch <filename>`
  
@@ -100,13 +137,14 @@ For example:
 root@ubuntu:~$ touch test.txt
 root@ubuntu:~$
 ```
+where the text between the `:` and the `$` sign stands for the current working directory (`~` is the Home directory).
 
-## echo
+## `echo`
 
 Syntax: `echo <string>`  
 Used to display `<string>` on the command-line. It is a built-in command used in shell scripts and batch files to output status text to the screen or a file.
 
-## dirname
+## `dirname`
 
 Syntax: `dirname <file-path>`  
 
@@ -120,7 +158,7 @@ root@ubuntu:~$ dirname /home/example/foo
 root@ubuntu:~$
 ```
 
-## readlink
+## `readlink`
 
 Used to obtain the full path of a file. `readlink` prints the absolute path of a symbolic link (a type of file in Linux that points to another file or a folder on your computer. Symlinks are similar to shortcuts in Windows.) or the absolute path for a supplied relative path.  
 NOTE: It is vital that our current directory is a parent directory or higher of the file in question.
@@ -152,7 +190,7 @@ root@ubuntu:~$ dirname $(readlink -f file.txt)
 root@ubuntu:~$
 ```
 
-## chmod
+## `chmod`
 
 `chmod` allows control of read, edit and run permission for files and directories. `chmod` stands for change 
 mode.   
