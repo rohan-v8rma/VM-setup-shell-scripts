@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 function Help() {
     #########################################
     #Help Function
@@ -9,7 +8,9 @@ function Help() {
     echo "Hey! Welcome to Rohan's script for installing applications easily on linux."
     echo "Whatever flag you add will help in specifying what application you want to install."
     echo 
-    echo "Syntax: rohan-script [--<option>]"
+    echo "Syntax for running the script : bash rohan-script flag(s)"
+    echo
+    echo "Note that the script should be run with one or more flags."
     echo 
     echo "Standard Softwares:"
     echo 
@@ -44,7 +45,13 @@ for flag in "$@"; do
         --help)
             Help
             ;;
+        *)
+            echo "'${flag}' is an invalid flag. Please try again."
+            echo "Type 'bash rohan-script.sh --help' for all flag options."
+            ;;
+
         #Standard Softwares
+
         --codeprocessors)
             ./compilers-and-interpreters.sh
             ;;
@@ -84,7 +91,9 @@ for flag in "$@"; do
             ./onlyoffice.sh
             ./vs-code.sh
             ;;
+
         # Complex Instructions
+        
         --dockmodify)
             ./dock-modification.sh
             ;;
