@@ -1,11 +1,21 @@
+# Running these scripts
+
+Navigate to the folder that contains the cloned repository folder.
+
+
 # INDEX
 
 - [INDEX](#index)
 
 - [Introduction to Shell Basics](#introduction-to-shell-basics)
+  - [What is Bash?](#what-is-bash-)
   - [Fundamentals](#fundamentals)
-  - [Regular User vs. Super User](#regular-user-vs-super-user)
+  - [Shell Prompt](#shell-prompt)
   - [**Home directory** in Linux](#home-directory-in-linux)
+
+- [Bash Scripts](#bash-scripts)
+  - [Defining variables](#defining-variables)
+  - [Separating Commands with Semicolons](#separating-commands-with-semicolons)
 
 - [Commands](#commands)
   - [`cd`](#cd)
@@ -16,7 +26,7 @@
   - [`dirname`](#dirname)
   - [`readlink`](#readlink)
     - [**flags**](#flags)
-  - [command substitution (`$`)](#command-substitution-)
+  - [command substitution (`$`)](#command-substitution)
   - [`chmod`](#chmod)
   - [comment operator (`<<`)](#comment-operator-)
 
@@ -44,6 +54,12 @@
 
 # Introduction to Shell Basics
 
+## What is Bash?
+
+The Linux command line is provided by a program called the shell. The default shell for many Linux distros is the GNU Bourne-Again Shell (bash).
+
+Bash is very powerful as it can simplify certain operations that are hard to accomplish efficiently with a GUI. Remember that most servers do not have a GUI.
+
 ## Fundamentals
 
 - Basic commands:
@@ -56,13 +72,17 @@
 - Linux has a root directory `‘/’` and all files and folders are contained inside it.
 - The working directory on startup is `/home/<username>` which is the [**Home directory**](#home-directory-in-linux), but it can be anything set by the system administrator.
 
-## Regular User vs. Super User
+## Shell Prompt
 
-- Operating as a regular user.
+When a shell is used interactively, it displays a `$` when it is waiting for a command from the user. This is called the **shell prompt**.
+
 ```console
 rohan@ubuntu:~$ 
 ```
-- Operating as a super user.
+
+If shell is running as root, the prompt is changed to `#`. The superuser shell prompt looks like this:
+
+
 ```console
 rohan@ubuntu:~#
 ```
@@ -74,6 +94,50 @@ privileges are needed.
 `~` represents the **Home directory** of our linux system. Note that this is different from the `home` directory of the system. 
 
 The **Home directory** stands for `/home/<user-name>` so we can use the tilde symbol (`~`) to not have to change our script for different users.
+
+# Bash Scripts
+
+Scripts start with a bash bang.
+Scripts are also identified with a shebang. Shebang is a combination of `bash #` and `bang !`  followed by the bash shell path. 
+
+```bash
+#! /bin/bash
+```
+
+This is the first line of the script. Shebang tells the shell to execute it via bash shell. Shebang is simply an absolute path to the bash interpreter.
+
+## Defining variables
+
+We can define a variable by using the syntax `variable_name=value`. 
+
+To get the value of the variable, add `$` before the variable name.
+
+```bash
+#!/bin/bash
+# A simple variable example
+
+greeting=Hello
+
+echo $greeting
+```
+
+This can be considered as an example of [command substitution](#command-substitution) as we get values of variables when we type variable names directly in the terminal. 
+
+## Separating Commands with Semicolons
+
+When the shell sees a semicolon on a command line, it's treated as a command separator -- basically like pressing the ENTER key to execute a command. 
+
+When would you want to use a semicolon instead of pressing ENTER? 
+-  It's nice when you want to execute a series of commands, typing them all at once at a single prompt. 
+    All of them will be visible on the same command line and they'll be grouped together in the history list.
+  
+    This makes it easy to see, later, that you intended this series of commands to be executed one after another. And you can re-execute them all with a simple history command. 
+
+- It's useful with sleep to run a command after a delay. 
+  ```bash
+  echo "Type CTRL-c to abort logout"; sleep 10; exit
+  ```
+-  If you're running a series of commands that take some time to complete, you can type all the commands at once and leave them to run unattended. For example, if a two scripts need to be run in succession and they take a lot of time this is helpful.
 
 # Commands
 
@@ -213,6 +277,9 @@ mode.
 
 Syntax: `chmod u+x <file-name>`  
 This command is used to give the shell script `<file-name>` executable permissions. 
+
+A file retains the permissions it had even when its name is changed.
+
 
 ## comment operator (`<<`)
 Syntax:
