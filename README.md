@@ -2,7 +2,6 @@
 
 Navigate to the folder that contains the cloned repository folder.
 
-
 # INDEX
 
 - [INDEX](#index)
@@ -16,6 +15,7 @@ Navigate to the folder that contains the cloned repository folder.
 - [Bash Scripts](#bash-scripts)
   - [Defining variables](#defining-variables)
   - [Separating Commands with Semicolons](#separating-commands-with-semicolons)
+  - [`#` and `@` expressions in a Bash Script](#and--expressions-in-a-bash-script)
 
 - [Commands](#commands)
   - [`cd`](#cd)
@@ -138,6 +138,13 @@ When would you want to use a semicolon instead of pressing ENTER?
   echo "Type CTRL-c to abort logout"; sleep 10; exit
   ```
 -  If you're running a series of commands that take some time to complete, you can type all the commands at once and leave them to run unattended. For example, if a two scripts need to be run in succession and they take a lot of time this is helpful.
+
+## `#` and `@` expressions in a Bash Script
+
+`@` - The array of parameters passed to a bash script
+`#` - The number of positional parameters passed to a script.
+
+We can use the command substitution method `$@`/`$#` in order to get the values of these expressions.
 
 # Commands
 
