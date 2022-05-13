@@ -1,6 +1,6 @@
-# Running these scripts
+# Running the script
 
-Navigate to the folder that contains the cloned repository folder.
+![](./README-resources/script-demo.gif)
 
 # INDEX
 
