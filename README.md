@@ -43,9 +43,8 @@
   - [Package Management](#package-management)
     - [Functions of `apt` tool](#functions-of-apt-tool)
     - [`apt remove` vs. `apt purge`]()
-  
+- [Containers](#containers)
 - [LXDE](#lxde)
-
   - [What is LXDE?](#what-is-lxde)
   - [Tips and Tricks](#tips-and-tricks)
     - [Installing LXDE](#installing-lxde)
@@ -380,6 +379,10 @@ The `apt` tool was introduced to solve this problem. `apt` consists some of the 
 - `sudo apt upgrade`: Upgrades the previously installed software to newer versions
 - `sudo apt install <package-name>`: Used to install new software packages
 - `sudo apt remove <package-name>`: Removes pieces of software WITHOUT breaking the system
+
+# Containers
+
+
 
 # LXDE
 
