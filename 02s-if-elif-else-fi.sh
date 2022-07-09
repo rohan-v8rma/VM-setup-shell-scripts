@@ -1,7 +1,6 @@
 #!/bin/bash
 
-# NOTE that spacing matters a lot in bash scripts 
-# because a space can be taken as an argument
+: ' NOTE that spacing matters a lot in bash scripts because a space can be taken as an argument '
 
 
 x=1
