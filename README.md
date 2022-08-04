@@ -4,45 +4,45 @@
 
 # INDEX
 
+- [Running the script](#running-the-script)
 - [INDEX](#index)
-
 - [Introduction to Shell Basics](#introduction-to-shell-basics)
-  - [What is Bash?](#what-is-bash-)
+  - [What is Bash?](#what-is-bash)
   - [Fundamentals](#fundamentals)
   - [Shell Prompt](#shell-prompt)
   - [**Home directory** in Linux](#home-directory-in-linux)
-
 - [Bash Scripts](#bash-scripts)
   - [Defining variables](#defining-variables)
   - [Separating Commands with Semicolons](#separating-commands-with-semicolons)
-  - [`#` and `@` expressions in a Bash Script](#and--expressions-in-a-bash-script)
-
+  - [`#` and `@` expressions in a Bash Script](#-and--expressions-in-a-bash-script)
 - [Commands](#commands)
   - [`cd`](#cd)
     - [**Shortcuts**](#shortcuts)
   - [`mv`](#mv)
   - [`touch`](#touch)
   - [`echo`](#echo)
+  - [`tee`](#tee)
   - [`dirname`](#dirname)
+    - [`dd` command (For making bootable USBs and swap partitions)](#dd-command-for-making-bootable-usbs-and-swap-partitions)
   - [`readlink`](#readlink)
     - [**flags**](#flags)
-  - [command substitution (`$`)](#command-substitution)
+  - [command substitution (`$`)](#command-substitution-)
   - [`chmod`](#chmod)
   - [comment operator (`<<`)](#comment-operator-)
-
 - [Important Concepts](#important-concepts)
-
   - [Environment Variables](#environment-variables)
   - [File Names](#file-names)
   - [UUID (`Universally Unique Identifier`)](#uuid-universally-unique-identifier)
   - [File Offset](#file-offset)
   - [Why do Linux and Windows show different time in a Dual Boot?](#why-do-linux-and-windows-show-different-time-in-a-dual-boot)
+  - [What is a Swap Partition?](#what-is-a-swap-partition)
+      - [Changing the size of the swap partition using the terminal](#changing-the-size-of-the-swap-partition-using-the-terminal)
+  - [Single Quotes vs. Double Quotes in Bash](#single-quotes-vs-double-quotes-in-bash)
   - [TODO](#todo)
     - [Loop Device](#loop-device)
     - [Block Device](#block-device)
   - [Package Management](#package-management)
-    - [Functions of `apt` tool](#functions-of-apt-tool)
-    - [`apt remove` vs. `apt purge`]()
+    - [Functions of **apt** tool](#functions-of-apt-tool)
 - [Containers](#containers)
 - [LXDE](#lxde)
   - [What is LXDE?](#what-is-lxde)
@@ -215,6 +215,27 @@ where the text between the `:` and the `$` sign stands for the current working d
 Syntax: `echo <string>`  
 Used to display `<string>` on the command-line. It is a built-in command used in shell scripts and batch files to output status text to the screen or a file.
 
+## `tee`
+
+The tee command reads standard input (stdin) and writes it to both standard output (stdout) and one or more files. tee is usually part of a pipeline, and any number of commands can precede or follow it.
+
+So, for example, if we wish to append a new command to an executable file :
+```console
+root@ubuntu:~$ echo '<command>' | tee -a filename.sh
+<command>
+rohan@rohan-G3:~$ 
+```
+- The output of `echo '<command>'`, which is `<command>`, is displayed on the standard output device as shown, along with `<command>` being written to the file `filename.sh`.
+
+- Here, the `-a` flag represents that the file should not be overwritten and the command should be appended to its end.
+
+We can also prefix `sudo` to the `tee` command to be able to write to files that are read-only for guest users.
+```bash
+echo '<command>' | sudo tee -a filename.sh
+```
+
+Refer [this](https://phoenixnap.com/kb/linux-tee#:~:text=What%20Does%20tee%20Command%20Do,can%20precede%20or%20follow%20it.) for more information about `tee`.
+
 ## `dirname`
 
 Syntax: `dirname <file-path>`  
@@ -228,6 +249,10 @@ root@ubuntu:~$ dirname /home/example/foo
 /home/example
 root@ubuntu:~$
 ```
+
+### `dd` command (For making bootable USBs and swap partitions)
+
+Refer [this](https://linuxhint.com/dd_command_linux/).
 
 ## `readlink`
 
@@ -353,6 +378,23 @@ When your computer is powered on, the hardware clock is read and used to set the
 By default, Linux assumes that the time stored in the hardware clock is in UTC, not the local time. On the other hand, Windows thinks that the time stored on the hardware clock is local time. That’s where the trouble starts.
 
 Refer [this](./linux-windows-time-diff.sh) executable shell script for resolving this issue.
+
+## What is a Swap Partition?
+
+TODO
+
+[`dd`](#dd-command-for-making-bootable-usbs-and-swap-partitions) command is used for making swap partitions.
+
+#### [Changing the size of the swap partition using the terminal](https://askubuntu.com/a/1177939)
+
+## Single Quotes vs. Double Quotes in Bash
+
+- [Single Quotes](https://www.gnu.org/savannah-checkouts/gnu/bash/manual/bash.html#Single-Quotes)
+- [Double Quotes](https://www.gnu.org/savannah-checkouts/gnu/bash/manual/bash.html#Double-Quotes)
+
+It is better to use Single Quotes unless you know what you are doing.
+
+
 
 ## TODO
 
