@@ -29,6 +29,7 @@ function Help() {
     echo 
     echo "--dockmodify           A script for changing the dock position to the bottom in GNOME."
     echo "--linwintime           A script for resolving the time discrepancy in a dual boot of Windows and Linux."
+    echo "--swapinc              A script for changing the size of the swap size to 8 GB. If you have more RAM in your system, increase the parameter in the script to be equivalent to your RAM size."
     echo "--allinstruct          Execute all instructions." 
     echo    
     echo "--help                 This help text."
@@ -99,6 +100,9 @@ for flag in "$@"; do
             ;;
         --linwintime)
             ./linux-windows-time-diff.sh
+            ;;
+        --swapinc)
+            ./swap-size-increase.sh
             ;;
         --allinstruct)
             ./dock-modification.sh
