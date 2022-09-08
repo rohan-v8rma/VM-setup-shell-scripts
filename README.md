@@ -30,20 +30,14 @@
   - [`chmod`](#chmod)
   - [comment operator (`<<`)](#comment-operator-)
 - [Important Concepts](#important-concepts)
-  - [Environment Variables](#environment-variables)
   - [File Names](#file-names)
-  - [UUID (`Universally Unique Identifier`)](#uuid-universally-unique-identifier)
-  - [File Offset](#file-offset)
-  - [Why do Linux and Windows show different time in a Dual Boot?](#why-do-linux-and-windows-show-different-time-in-a-dual-boot)
-  - [What is a Swap Partition?](#what-is-a-swap-partition)
-      - [Changing the size of the swap partition using the terminal](#changing-the-size-of-the-swap-partition-using-the-terminal)
   - [Single Quotes vs. Double Quotes in Bash](#single-quotes-vs-double-quotes-in-bash)
-  - [TODO](#todo)
-    - [Loop Device](#loop-device)
-    - [Block Device](#block-device)
+  - [Invoking interpreters using shebang (`#!`)](#invoking-interpreters-using-shebang-)
   - [Package Management](#package-management)
-    - [Functions of **apt** tool](#functions-of-apt-tool)
-- [Containers](#containers)
+    - [Advanced Packaging Tool (`apt`)](#advanced-packaging-tool-apt)
+      - [Functions of **apt** tool](#functions-of-apt-tool)
+    - [Debian Package Installer `dpkg`](#debian-package-installer-dpkg)
+    - [Alien Package Converter `alien`](#alien-package-converter-alien)
 - [LXDE](#lxde)
   - [What is LXDE?](#what-is-lxde)
   - [Tips and Tricks](#tips-and-tricks)
@@ -324,68 +318,10 @@ where `comment-name` can be replaced by any string.
 
 # Important Concepts
 
-## Environment Variables
-
-Environment variables are data holder variables stored within a system like unix, linux or windows etc. These variables are not accessible outside that environment. So only the programs executing inside these environments can access them and use them. They have a name and value.
-
-They are like shortcuts which are used to avoid remembering paths for execution. 
-
-For example, if we wish to execute python in an ubuntu installation in which the environment variables are set,
-```console
-python filename.py 
-```
-
-If I didn't set environment variable or define it,
-```console
-/usr/bin/python filename.py 
-```
-In both the methods python will execute and the first one is easy to use than the second one.
-
-
 ## File Names
 
 - File names that begin with a period character are hidden. This means that `ls` will not list them unless we say `ls -a`, where `-a` means display all.
 - File names in Linux, like Unix, are case sensitive.
-
-## UUID (`Universally Unique Identifier`)
-
-UUID is a unique identifier used in partitions to uniquely identify partitions in Linux operating systems. 
-
-UUID is a property of the disk partition itself. So, if you install the hard drive containing the partitions on another Linux computer, the partitions will have the same UUID as before which is a good thing.
-
-The UUID of a partition is required mainly for mounting the partitions correctly in a computer system where hundreds of hard drives are installed. 
-
-If you mount the hard drives or SSDs using UUIDs, there is almost zero chances of the wrong hard drive getting mounted and causing serious data loss.
-
-Our usual computers and laptops where mostly 1 or 2 hard drives are installed and we need limited number of partitions won’t benefit much from UUIDs.
-
-Refer [this](https://linuxhint.com/uuid_storage_devices_linux/) for obtaining the UUID of a partition. 
-
-## File Offset
-
-An offset into a file is simply the character location within that file, usually starting with 0; thus “offset 240” is actually the 241st byte in the file. 
-
-## Why do Linux and Windows show different time in a Dual Boot?
-
-A computer has two main clocks: a **system** clock and a **hardware** clock.
-
-A hardware clock which is also called RTC (real time clock) or CMOS/BIOS clock. This clock is outside the operating system, on your computer’s motherboard. It keeps on running even after your system is powered off.
-
-The system clock is what you see inside your operating system.
-
-When your computer is powered on, the hardware clock is read and used to set the system clock. Afterwards, the system clock is used for tracking time. If your operating system makes any changes to system clock, like changing time zone etc, it tries to sync this information to the hardware clock.
-
-By default, Linux assumes that the time stored in the hardware clock is in UTC, not the local time. On the other hand, Windows thinks that the time stored on the hardware clock is local time. That’s where the trouble starts.
-
-Refer [this](./linux-windows-time-diff.sh) executable shell script for resolving this issue.
-
-## What is a Swap Partition?
-
-TODO
-
-[`dd`](#dd-command-for-making-bootable-usbs-and-swap-partitions) command is used for making swap partitions.
-
-#### [Changing the size of the swap partition using the terminal](https://askubuntu.com/a/1177939)
 
 ## Single Quotes vs. Double Quotes in Bash
 
@@ -394,17 +330,39 @@ TODO
 
 It is better to use Single Quotes unless you know what you are doing.
 
+## Invoking interpreters using shebang (`#!`)
 
+Shebang is a character sequence consisting of a hash sign and an exclamation mark (`#!`) and is used to tell the operating system which interpreter to use to parse the rest of the file.
 
-## TODO
+The Shebang interpreter directive takes the following form:
+```bash
+#!interpreter [arguments]
+```
 
-### Loop Device
+The directive must be the first line in the script.
 
-### Block Device
+The directive must start with shebang (`#!`).
+
+White space after the shebang characters (`#!`) is optional.
+
+Interpreter is the full path to a binary file (ex: `/bin/sh`, `/bin/bash`).
+
+Interpreter arguments are optional.
+
+For example:
+
+- `#!/bin/bash` - Uses bash to parse the file.
+- `#!/usr/bin/env perl` - Uses the `env` command to find the path to the perl executable.
+- `#!/usr/bin/python` - Executes the file using the python binary.
+
 
 ## Package Management
 
-**Debian** has a robust packaging system and every component and application is built into a package that is installed on your system. Debian uses a set of tools called **Advanced Packaging Tool** _(APT, not to be confused with the command `apt`)_ to manage this packaging system.
+**Debian** has a robust packaging system and every component and application is built into a package that is installed on your system. 
+
+### Advanced Packaging Tool (`apt`)
+
+Debian uses a set of tools called **Advanced Packaging Tool** _(APT, not to be confused with the command `apt`)_ to manage this packaging system.
 
 There are various tools that interact with APT and allow us to install, remove and manage packages in Debian based Linux distributions. `apt-get` is one such command-line tool which is widely popular.
 However there is a problem of redundancy when it comes to `apt-get` commands, as there are a number of similar commands in the `apt-cache` tool.
@@ -414,7 +372,7 @@ On the other hand, the most commonly used package management commands are scatte
 
 The `apt` tool was introduced to solve this problem. `apt` consists some of the most widely used features from `apt-get` and `apt-cache` leaving aside obscure and seldom used features.
 
-### Functions of **apt** tool
+#### Functions of **apt** tool
 
 - Maintains a package list, meaning it fetches a list of all the available software that can be installed on the platform. 
 - `sudo apt update`: Updates the package list
@@ -422,9 +380,37 @@ The `apt` tool was introduced to solve this problem. `apt` consists some of the 
 - `sudo apt install <package-name>`: Used to install new software packages
 - `sudo apt remove <package-name>`: Removes pieces of software WITHOUT breaking the system
 
-# Containers
+### Debian Package Installer `dpkg`
 
+`dpkg` is a tool to install, build, remove and manage Debian packages. The primary and more user-friendly front-end for `dpkg` is aptitude(1). 
 
+Syntax:
+```
+dpkg [option...] action
+```
+
+`dpkg` itself is controlled entirely via command line parameters, which consist of exactly one action and zero or more options. 
+
+The action-parameter tells `dpkg` what to do and options control the behavior of the action in some way.
+
+Refer the official documentation on [man7.org](https://man7.org/linux/man-pages/man1/dpkg.1.html) to find out how to use `dpkg` and its various actions.
+
+The simplest way to use `dpkg` to install a `.deb` package.
+```
+dpkg -i <package>.deb
+```
+
+### Alien Package Converter `alien`
+
+Alien is a tool that converts different Linux package distribution file formats to Debian. 
+
+It supports conversion between Linux Standard Base, `.rpm`, `.deb`, Stampede (`.slp`) and Slackware (`.tgz`) packages.
+
+Ubuntu is a popular Debian based Linux distribution, and as such it uses `.deb` packages for installing software.
+
+However, not all software is packaged in the `.deb` format. Some software maintainers only provide a `.rpm` package, which is a format used exclusively with Red Hat and CentOS based distributions.
+
+Refer [this](https://www.serverlab.ca/tutorials/linux/administration-linux/how-install-rpm-packages-on-ubuntu-using-alien/) tutorial for information on how to use it.
 
 # LXDE
 
@@ -444,5 +430,7 @@ Run the `lxde-install.sh` executable script present in this repo.
 
 1. Logout 
 2. Reach the login screen and login after selecting LXDE as your desktop environment from the bottom right menu.
+   
 ### Increasing the Window button sizes 
+
 
