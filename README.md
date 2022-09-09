@@ -21,6 +21,7 @@
   - [`mv`](#mv)
   - [`touch`](#touch)
   - [`echo`](#echo)
+  - [`env`](#env)
   - [`tee`](#tee)
   - [`dirname`](#dirname)
     - [`dd` command (For making bootable USBs and swap partitions)](#dd-command-for-making-bootable-usbs-and-swap-partitions)
@@ -209,6 +210,38 @@ where the text between the `:` and the `$` sign stands for the current working d
 Syntax: `echo <string>`  
 Used to display `<string>` on the command-line. It is a built-in command used in shell scripts and batch files to output status text to the screen or a file.
 
+## `env`
+
+`env` is a shell command for Unix and Unix-like operating systems. 
+
+- It is can be used to print a list of environment variables like this:
+
+  ```
+  SHELL=/bin/bash
+  QT_ACCESSIBILITY=1
+  COLORTERM=truecolor
+  XDG_CONFIG_DIRS=/etc/xdg/xdg-ubuntu:/etc/xdg
+  GNOME_DESKTOP_SESSION_ID=this-is-deprecated
+  LANGUAGE=en_IN:en
+  GNOME_SHELL_SESSION_MODE=ubuntu
+  local/share:/usr/share:/var/lib/snapd/desktop
+  PATH=/usr/local/bin:/usr/sbin:/usr/local/games:/snap/bin
+  GDMSESSION=ubuntu
+  ...
+  ...
+  ...
+  ```
+
+  Using `env`, variables may be added or removed, and existing variables may be changed by assigning new values to them.
+
+- In practice, `env` has another common use as a utility. It is often used by shell scripts to [launch the correct interpreter](#invoking-interpreters-using-shebang).
+  ```
+  #!/usr/bin/env bash
+  ```
+  The advantage of using this approach is that it will search for the `bash` executable in the user’s `$PATH` environmental variable. 
+
+  If there are more than one paths to `bash`, the first one will be used by the script.
+
 ## `tee`
 
 The tee command reads standard input (stdin) and writes it to both standard output (stdout) and one or more files. tee is usually part of a pipeline, and any number of commands can precede or follow it.
@@ -352,9 +385,25 @@ Interpreter arguments are optional.
 For example:
 
 - `#!/bin/bash` - Uses bash to parse the file.
-- `#!/usr/bin/env perl` - Uses the `env` command to find the path to the perl executable.
+- `#!/usr/bin/env perl` - Uses the [`env`](#env) command to find the path to the perl executable.
 - `#!/usr/bin/python` - Executes the file using the python binary.
 
+Take a look at this example, where we invoke the `python3` interpreter, and run python code within a `.sh` script.
+
+```python
+#!/usr/bin/python3
+
+print("Hello world")
+
+n = 0
+
+for i in range(0, 5):
+    if(n % 2 == 0):
+        print("Even")
+    else:
+        print("Odd")
+    n += 1
+```
 
 ## Package Management
 
