@@ -1,5 +1,10 @@
 # Running the script
 
+Run:
+```
+sudo chmod -R u+x .
+```
+
 ![](./README-resources/script-demo.gif)
 
 # INDEX
@@ -18,18 +23,23 @@
 - [Commands](#commands)
   - [`cd`](#cd)
     - [**Shortcuts**](#shortcuts)
+  - [`ls` (TODO)](#ls-todo)
+    - [Flags (Do in-depth)](#flags-do-in-depth)
+  - [`pwd`](#pwd)
   - [`mv`](#mv)
   - [`touch`](#touch)
   - [`echo`](#echo)
   - [`env`](#env)
   - [`tee`](#tee)
   - [`dirname`](#dirname)
+  - [`grep` (TODO)](#grep-todo)
     - [`dd` command (For making bootable USBs and swap partitions)](#dd-command-for-making-bootable-usbs-and-swap-partitions)
   - [`readlink`](#readlink)
     - [**flags**](#flags)
   - [command substitution (`$`)](#command-substitution-)
   - [`chmod`](#chmod)
   - [comment operator (`<<`)](#comment-operator-)
+- [Subshells and Grouping commands using `(` and `)` operators](#subshells-and-grouping-commands-using--and--operators)
 - [Important Concepts](#important-concepts)
   - [File Names](#file-names)
   - [Single Quotes vs. Double Quotes in Bash](#single-quotes-vs-double-quotes-in-bash)
@@ -55,11 +65,6 @@ The Linux command line is provided by a program called the shell. The default sh
 Bash is very powerful as it can simplify certain operations that are hard to accomplish efficiently with a GUI. Remember that most servers do not have a GUI.
 
 ## Fundamentals
-
-- Basic commands:
-  - `pwd`: print working directory
-  - `cd`: change directory
-  - `ls`: list files and directories
 
 - Unix-like operating systems and Windows have hierarchial directory structure (tree-like pattern of directories, called folders in other systems). 
 - However, Windows has different drive letters for different storage devices and partitions, whereas Linux has only one file tree, and different devices can be on different branches of that tree.
@@ -144,6 +149,8 @@ We can use the command substitution method `$@`/`$#` in order to get the values 
 
 ## `cd`
 
+Command for changing working directory.
+
 Syntax: `cd <path name>`  
 `<path name>` can be **absolute** or **relative** to the current working directory.
 
@@ -173,6 +180,20 @@ Syntax: `cd <path name>`
 - `cd -`: changes working directory to the previous one
 - `cd ~userName`: changes working directory to the home directory of the specified user  
 <br>
+
+## `ls` (TODO)
+
+Command for listing files and directories.
+
+### Flags (Do in-depth)
+
+- `-R`: Recursively searches inside all folders in a directory.
+- `-h`: Displays file sizes in human-readable format
+- `-l`:
+
+## `pwd`
+
+Command for printing working directory.
 
 ## `mv`
 
@@ -277,6 +298,8 @@ root@ubuntu:~$ dirname /home/example/foo
 root@ubuntu:~$
 ```
 
+## `grep` (TODO)
+
 ### `dd` command (For making bootable USBs and swap partitions)
 
 Refer [this](https://linuxhint.com/dd_command_linux/).
@@ -348,6 +371,10 @@ Syntax:
 comment-name
 ```
 where `comment-name` can be replaced by any string.
+
+# Subshells and Grouping commands using `(` and `)` operators
+
+TODO
 
 # Important Concepts
 

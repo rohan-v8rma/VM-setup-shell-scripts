@@ -69,6 +69,9 @@ for flag in "$@"; do
         --edge)
             ./microsoft-edge.sh
             ;;
+        --figma)
+            ./figma.sh
+            ;;
         --gnometweaks)
             ./gnome-tweaks.sh
             ;;
@@ -78,6 +81,12 @@ for flag in "$@"; do
         --onlyoffice)
             ./onlyoffice.sh
             ;;
+        --tlauncher)
+            ./tlauncher.sh
+            ;;    
+        --todoist)
+            ./todoist.sh
+            ;;
         --vscode)
             ./vs-code.sh
             ;;
@@ -86,10 +95,13 @@ for flag in "$@"; do
             ./cpufreq-power-manager.sh
             ./discord.sh 
             ./dropbox.sh
-            ./microsoft-edge.sh
+            ./figma.sh
             ./gnome-tweaks.sh
             ./lxde-install.sh
+            ./microsoft-edge.sh
             ./onlyoffice.sh
+            ./tlauncher.sh
+            ./todoist.sh
             ./vs-code.sh
             ;;
 

@@ -7,7 +7,7 @@ sudo apt install git
 
 #Adding Dropbox to Nautilus
 
-sudo apt install python3-gpg
+sudo apt install -y python3-gpg
 
 sudo apt install -y nautilus-dropbox
 
