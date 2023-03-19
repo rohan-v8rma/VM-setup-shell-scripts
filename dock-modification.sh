@@ -16,3 +16,5 @@ git clone https://github.com/vinceliuice/McMojave-circle
 cd ~/Downloads/McMojave-circle
 
 ./install.sh
+
+cd ~

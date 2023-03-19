@@ -17,12 +17,16 @@ function Help() {
     echo "--codeprocessors       A set of standard compilers and interpreters."
     echo "--cpufreq              A software for managing CPU powersaving."
     echo "--discord              Discord : A VoIP, instant messaging and digital distribution platform for gamers."
-    echo "--dropbox              A script for integrating Dropbox with the Nautilus file manager."
+    echo "--dropbox              A script for integrating Dropbox with the Nautilus file manager; as well as downloading dropboxignore."
     echo "--edge                 Microsoft Edge : The default browser in Windows 11."
     echo "--gnometweaks          A software for customizing the GNOME desktop environment."
     echo "--lxde                 LXDE : A lightweight desktop environment for Linux."
     echo "--onlyoffice           Onlyoffice : The best editor for editing Microsoft Office files in Linux."
+    echo "--terminator           "
+    echo "--tlauncher            "
+    echo "--todoist              "
     echo "--vscode               VS Code : A code editor by Microsoft."
+    echo "--ytdl                 Youtube-dl: A command line utility for downloading YouTube videos."
     echo "--allapps              Install all the apps."
     echo 
     echo "Complex Instructions:"
@@ -81,6 +85,9 @@ for flag in "$@"; do
         --onlyoffice)
             ./onlyoffice.sh
             ;;
+        --terminator)
+            ./terminator.sh
+            ;;
         --tlauncher)
             ./tlauncher.sh
             ;;    
@@ -89,6 +96,9 @@ for flag in "$@"; do
             ;;
         --vscode)
             ./vs-code.sh
+            ;;
+        --ytdl)
+            ./youtube-dl.sh
             ;;
         --allapps)
             ./compilers-and-interpreters.sh
@@ -100,9 +110,11 @@ for flag in "$@"; do
             ./lxde-install.sh
             ./microsoft-edge.sh
             ./onlyoffice.sh
+            ./terminator.sh
             ./tlauncher.sh
             ./todoist.sh
             ./vs-code.sh
+            ./youtube-dl.sh
             ;;
 
         # Complex Instructions
