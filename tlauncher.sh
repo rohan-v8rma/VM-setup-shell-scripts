@@ -1,3 +1,5 @@
+#!/bin/bash
+
 sudo apt install -y openjdk-8-jre openjfx
 
 # (If you have Java 9 or 10, you need to install Java 8 and get the launcher to work from it, or completely remove Java 9 or 10.)
