@@ -3,7 +3,9 @@
 # If the directories already exist, they are NOT overrwritten in the case of mkdir
 mkdir -p ~/.local/etc/cron.daily ~/.var/spool/anacron
 
+# Added shebang to script
 echo "#!/bin/bash" > sync-codes
+
 # rsync: The command for synchronizing files and directories.
 # -av: Options for rsync. -a preserves the directory structure and file attributes, and -v enables verbose output for displaying progress during the copying process.
 # --exclude='node_modules': The --exclude option specifies the pattern to exclude from the copy operation. In this case, we exclude any sub-folders named node_modules.
@@ -15,13 +17,22 @@ cp sync-codes ~/.local/etc/cron.daily
 
 chmod +x ~/.local/etc/cron.daily/sync-codes
 
+# Removed the script from current wd
 rm sync-codes
 
 echo "SHELL=/bin/sh" > ~/.local/etc/anacrontab
 echo "PATH=/sbin:/bin:/usr/sbin:/usr/bin" >> ~/.local/etc/anacrontab
-echo "1 0 cron.sync-codes run-parts ~/.local/etc/cron.daily" >> ~/.local/etc/anacrontab
+
+# This anacron job will execute everyday, with a delay of 5 minutes from startup
+echo "1 5 cron.sync-codes run-parts ~/.local/etc/cron.daily" >> ~/.local/etc/anacrontab
 
 # Performing a syntax check on anacrontab file.
 anacron -T -t ~/.local/etc/anacrontab -S ~/.var/spool/anacron
 
-echo "anacron -f -t ~/.local/etc/anacrontab -S ~/.var/spool/anacron" > ~/.profile
+echo "anacron -t ~/.local/etc/anacrontab -S ~/.var/spool/anacron" > ~/.profile
+
+# Execute the following command, to see whether the script is functional:
+# run-parts -v  ~/.local/etc/cron.daily
+
+# Execute the following command, to see what cron jobs were run
+# grep -i cron /var/log/syslog
