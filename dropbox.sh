@@ -2,7 +2,7 @@
 
 sudo apt upgrade
 
-#Adding GitHub to Ubuntu
+#Adding git to Ubuntu
 sudo apt install git
 
 #Adding Dropbox to Nautilus

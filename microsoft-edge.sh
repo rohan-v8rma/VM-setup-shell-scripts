@@ -1,3 +1,5 @@
+#!/bin/bash
+
 #Adding microsoft edge to Ubuntu
 
 sudo apt install -y curl
