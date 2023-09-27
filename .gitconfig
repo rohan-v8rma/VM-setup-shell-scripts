@@ -1,0 +1,22 @@
+[user]
+	name = Rohan Verma
+[init]
+	defaultBranch = master
+[pull]
+	rebase = false
+[alias]
+	# using build-in standards
+	lol = log --oneline --graph --decorate
+	## With Names
+	# my awesome git log replacement
+	lol0  = log --graph --pretty=format:\"%C(auto)%h%d%Creset %C(cyan)(%cr)%Creset %C(green)%cn%Creset %s\"
+	# same as lol, but ISO date
+	lol1 = log --graph --pretty=format:\"%C(auto)%h%d%Creset %C(cyan)(%ci)%Creset %C(green)%cn%Creset %s\"
+	## With Names and email
+	# my awesome git log replacement
+	lol2  = log --graph --pretty=format:\"%C(auto)%h%d%Creset %C(cyan)(%cr)%Creset %C(green)%cn <%ce>%Creset %s\"
+	# same as lol, but ISO date
+	lol3 = log --graph --pretty=format:\"%C(auto)%h%d%Creset %C(cyan)(%ci)%Creset %C(green)%cn <%ce>%Creset %s\"
+
+	# shows branches and their last commits
+	lol4 = log --all --graph --decorate --oneline --simplify-by-decoration
