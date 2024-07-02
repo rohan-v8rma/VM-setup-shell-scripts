@@ -7,6 +7,10 @@ sudo apt install -y python3-pip
 sudo apt install -y python3-venv
 sudo apt install -y idle-python3.10
 
+# Jupyter
+pip3 install jupyter
+
+
 
 #Adding C++
 sudo apt update

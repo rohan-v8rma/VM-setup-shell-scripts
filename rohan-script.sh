@@ -21,7 +21,7 @@ function Help() {
     echo "--docker               A script for installing Docker engine, Docker CLI and Docker Desktop."
     echo "--dropbox              A script for integrating Dropbox with the Nautilus file manager; as well as downloading dropboxignore."
     echo "--edge                 Microsoft Edge : The default browser in Windows 11."
-    echo "--gnometweaks          A software for customizing the GNOME desktop environment."
+    echo "--gnomeconfig          Multiple extensions for GNOME (gnome tweaks, gnome shell extension manager)."
     echo "--lxde                 LXDE : A lightweight desktop environment for Linux."
     echo "--onlyoffice           Onlyoffice : The best editor for editing Microsoft Office files in Linux."
     echo "--spotify              "
@@ -83,8 +83,8 @@ for flag in "$@"; do
         --figma)
             ./figma.sh
             ;;
-        --gnometweaks)
-            ./gnome-tweaks.sh
+        --gnomeconfig)
+            ./gnome-config.sh
             ;;
         --lxde)
             ./lxde-install.sh
@@ -118,7 +118,7 @@ for flag in "$@"; do
             ./docker.sh
             ./dropbox.sh
             ./figma.sh
-            ./gnome-tweaks.sh
+            ./gnome-config.sh
             ./lxde-install.sh
             ./microsoft-edge.sh
             ./onlyoffice.sh
